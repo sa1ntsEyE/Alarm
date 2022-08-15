@@ -1,0 +1,197 @@
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+*,*:before,*:after{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+input,button,textarea{font-family: inherit;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+/*/////////////////////////////////////////////*/
+
+
+
+._container{
+    max-width: 1110px;
+    margin: 0 auto;
+}
+
+.clock__block{
+    padding: 150px 0 0 0;
+}
+
+.clock{
+    margin:  20px 0 20px 0;
+    font-size: 92px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+
+.clock__{
+    font-size: 24px;
+    text-align: center;
+}
+
+.clock__name{
+    color: red;
+}
+
+
+.budilnik{
+    font-size: 24px;
+    text-align: center;
+}
+
+.bud__name{
+    color: red;
+}
+
+
+.inputs{
+    margin:  20px 0 0 0;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.input-hours{
+    text-align: center;
+    width: 80px;
+    border: 1px solid #000000;
+}
+
+.input-min{
+    text-align: center;
+    width: 40px;
+    border: 1px solid #000000;
+}
+
+.modal{
+    text-align: center;
+    display: none;
+    position:  fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content{
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 22%;
+}
+.p-class{
+    padding: 20px 0 0 0;
+    margin: 0 0 20px 0;
+    font-size: 24px;
+}
+.close{
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+
+.input-sub{
+    margin: 7px 0 0 0;
+}
+
+.inputSub{
+    width: 140px;
+    height: 30px;
+    border: 1px solid #000000;
+    font-size: 14px;
+}
+
+.inputDel{
+    width: 120px;
+    height: 20px;
+    border: 1px solid #000000;
+    font-size: 12px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

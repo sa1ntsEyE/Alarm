@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="wrapper ">
+    <form name=clock>
+        <div class="clock__">
+            <div class="clock__name">Часы</div>
+            <div class="clock"></div>
+        </div>
+        <div class="budilnik">
+            <div class="bud__name">Будильник</div>
+            <div class="inputs">
+                <input id="IH" class="input-hours" name=next1 type="text" value="" oninput="changeHours()" pattern="/(\d|1\d|2(?=[1-3])\d):[0-5]\d/">
+            </div>
+            <div class="input-sub">
+                <input id="inputSub" class="inputSub" type="submit" name=nextIn  value="Добавить будильник">
+            </div>
+            <div id="addBud" class="addBud"></div>
+        </div>
+    </form>
+</div>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <img src="./gif/maliy.gif" alt="">
+        <p class="p-class">Ваш будильник сработал!</p>
+        <audio id="myaudio" src="audio/bud.mp3" controls></audio>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
