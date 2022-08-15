@@ -14,7 +14,7 @@ function time() {
     clock.innerHTML = `${hours}:${minutes}:${sec}`;
     compare();
 }
-setInterval(time,100);
+setInterval(time, 100);
 // time change validation
 function changeHours() {
     let b = document.clock.next1;
@@ -66,8 +66,7 @@ document.getElementById('inputSub').onclick = function() {
 
     if (commentIH.value.length < 5) {
         alert('Enter full time');
-    }
-    else {
+    } else {
         commentIH.value = '';
         alarm.push(comment);
         saveBud();
