@@ -19,7 +19,7 @@ setInterval(time,100);
 function changeHours() {
     let b = document.clock.next1;
 
-    validateInput( b, 5 );
+    validateInput(b, 5);
     b.addEventListener('input', e => {
         const v = e.target.value;
 
@@ -35,9 +35,9 @@ function validateInput(b, amount) {
 
     if ((s) && s.length > 0) {
         if (s.length > 5) {
-            b.value = s.substr(0,s.length-1);
+            b.value = s.substr(0, s.length-1);
         } else if (s.length > 0) {
-            if (isNaN(parseInt(s.charAt( s.length-1)))) {
+            if (isNaN(parseInt(s.charAt(s.length-1)))) {
                 if (s.length > 1) {
                     b.value = s.substr(0, s.length-1);
                 } else {
@@ -119,7 +119,7 @@ function compare() {
     const dataFromStorage = JSON.parse(localStorage.getItem('addBud'));
 
     if (dataFromStorage) {
-        for (let i = 0; i < dataFromStorage.length; i++){
+        for (let i = 0; i < dataFromStorage.length; i++) {
             if (dataFromStorage[i].hours1 == hours+':'+minutes && sec == 00) {
                 dataFromStorage.splice(i, 1);
                 localStorage.setItem('addBud', JSON.stringify(dataFromStorage));
