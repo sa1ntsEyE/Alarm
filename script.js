@@ -5,7 +5,7 @@ let modal = document.getElementById('myModal');
 let span = document.getElementsByClassName('close')[0];
 
 // Displaying the time on the screen
-function time(){
+function time() {
     let date = new Date();
     let hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
     let minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
@@ -16,7 +16,7 @@ function time(){
 }
 setInterval(time,100);
 // time change validation
-function changeHours(){
+function changeHours() {
     let b = document.clock.next1;
 
     validateInput( b, 5 );
@@ -31,19 +31,17 @@ function changeHours(){
     })
 }
 
-function validateInput( b, amount ){
+function validateInput(b, amount) {
     let s = b.value;
 
     if ((s) && s.length > 0) {
         if (s.length > 5) {
-            b.value = s.substr( 0, s.length-1 );
-        }
-        else if (s.length > 0) {
-            if ( isNaN( parseInt( s.charAt( s.length-1 ) ) ) ) {
+            b.value = s.substr(0,s.length-1);
+        } else if (s.length > 0) {
+            if (isNaN(parseInt(s.charAt( s.length-1)))) {
                 if (s.length > 1) {
-                    b.value = s.substr( 0, s.length-1 );
-                }
-                else {
+                    b.value = s.substr(0, s.length-1);
+                } else {
                     b.value = "";
                 }
             }
@@ -68,7 +66,7 @@ document.getElementById('inputSub').onclick = function() {
     });
 
     if (commentIH.value.length < 5) {
-        alert('Enter full time')
+        alert('Enter full time');
     }
     else {
         commentIH.value = '';
@@ -85,12 +83,12 @@ ih.addEventListener('input', function() {
 
     if (this.value.length > 1 && this.value.length <= 2) {
         if (sum > 23) {
-            this.value = a[0]
+            this.value = a[0];
         }
     }
     if (this.value.length > 4 && this.value.length <= 5) {
         if (sum2 > 59) {
-            this.value = sum + ':' + a[3]
+            this.value = sum + ':' + a[3];
         }
     }
 });
@@ -101,7 +99,7 @@ function saveBud() {
 //load information with LocalStorage
 function loadBud() {
     if (localStorage.getItem('addBud')) alarm = JSON.parse(localStorage.getItem('addBud'));
-    showBud()
+    showBud();
 }
 //show information with LocalStorage
 function showBud() {
@@ -129,10 +127,10 @@ function compare() {
                 modal.style.display = 'block';
                 setTimeout(function () {
                     document.getElementById("myaudio").play();
-                },1)
+                }, 1);
                 function displayNone() {
                     modal.style.display = 'none';
-                    location.reload()
+                    location.reload();
                 }
                 setTimeout(displayNone, 15000);
             }
@@ -159,11 +157,11 @@ function removeBlock() {
 };
 
 span.onclick = function() {
-    modal.style.display = 'none'
+    modal.style.display = 'none';
 };
 
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
-    }
+    };
 };
