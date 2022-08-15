@@ -12,7 +12,7 @@ function time() {
     let sec = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
 
     clock.innerHTML = `${hours}:${minutes}:${sec}`;
-    compare()
+    compare();
 }
 setInterval(time,100);
 // time change validation
@@ -27,7 +27,6 @@ function changeHours() {
     });
     b.addEventListener('inputre', e => {
         const v = e.target.value;
-
     })
 }
 
@@ -122,7 +121,7 @@ function compare() {
     if (dataFromStorage) {
         for (let i = 0; i < dataFromStorage.length; i++){
             if (dataFromStorage[i].hours1 == hours+':'+minutes && sec == 00) {
-                dataFromStorage.splice(i,1);
+                dataFromStorage.splice(i, 1);
                 localStorage.setItem('addBud', JSON.stringify(dataFromStorage));
                 modal.style.display = 'block';
                 setTimeout(function () {
@@ -148,8 +147,8 @@ function removeBlock() {
         const dataFromStorage = JSON.parse(localStorage.getItem('addBud'));
 
         if (dataFromStorage) {
-            if (dataFromStorage.hours1 == block.hours1){
-                dataFromStorage.splice(0,1);
+            if (dataFromStorage.hours1 == block.hours1) {
+                dataFromStorage.splice(0, 1);
                 localStorage.setItem('addBud', JSON.stringify(dataFromStorage));
             }
         }
