@@ -38,8 +38,6 @@ img{vertical-align: top;}
 h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 /*/////////////////////////////////////////////*/
 
-
-
 ._container{
     max-width: 1110px;
     margin: 0 auto;
@@ -57,7 +55,6 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     align-content: center;
 }
 
-
 .clock__{
     font-size: 24px;
     text-align: center;
@@ -67,7 +64,6 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     color: red;
 }
 
-
 .budilnik{
     font-size: 24px;
     text-align: center;
@@ -76,7 +72,6 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 .bud__name{
     color: red;
 }
-
 
 .inputs{
     margin:  20px 0 0 0;
@@ -129,7 +124,6 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     font-size: 28px;
     font-weight: bold;
 }
-
 
 .input-sub{
     margin: 7px 0 0 0;

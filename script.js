@@ -1,5 +1,5 @@
 let clock  = document.querySelector('.clock');
-let addBud = document.querySelector('.addBud');
+let addAlarm = document.querySelector('.addAlarm');
 let ih = document.querySelector('#IH');
 let modal = document.getElementById('myModal');
 let span = document.getElementsByClassName('close')[0];
@@ -12,9 +12,9 @@ function time() {
     let sec = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
 
     clock.innerHTML = `${hours}:${minutes}:${sec}`;
-    compare();
+    compare()
 }
-setInterval(time, 100);
+setInterval(time, 0);
 // time change validation
 function changeHours() {
     let b = document.clock.next1;
@@ -47,32 +47,6 @@ function validateInput(b, amount) {
         }
     }
 }
-
-let alarm = [];
-
-loadBud();
-//Outputting information from the input to the page
-document.getElementById('inputSub').onclick = function() {
-    event.preventDefault();
-    let commentIH = document.getElementById('IH');
-    let comment = {
-        hours1: commentIH.value,
-        time: Math.floor(Date.now() / 1000),
-    };
-    let ar = document.getElementById("IH").value.split(':');
-    let ar2 = ar.map(function (name) {
-        return name.replace(/[^0-9\.]/g, '');
-    });
-
-    if (commentIH.value.length < 5) {
-        alert('Enter full time');
-    } else {
-        commentIH.value = '';
-        alarm.push(comment);
-        saveBud();
-        showBud();
-    }
-};
 //Checking the time zone
 ih.addEventListener('input', function() {
     let a = this.value;
@@ -90,24 +64,94 @@ ih.addEventListener('input', function() {
         }
     }
 });
+
+let alarm = [];
+loadBud();
+
+//Outputting information from the input to the page
+document.getElementById('inputSub').onclick = function() {
+    event.preventDefault();
+    let commentIH = document.getElementById('IH');
+    let comment = {
+        hours1: commentIH.value,
+        time: Math.floor(Date.now() / 1000),
+        id: alarm.length + 1,
+    };
+    let ar = document.getElementById("IH").value.split(':');
+    let ar2 = ar.map(function (name) {
+        return name.replace(/[^0-9\.]/g, '');
+    });
+
+    if (commentIH.value.length < 5) {
+        alert('Enter full time');
+    } else {
+        commentIH.value = '';
+        alarm.push(comment);
+        saveBud();
+        showBud(comment.id, comment.hours1);
+        compare();
+    }
+};
 //save information in LocalStorage
 function saveBud() {
-    localStorage.setItem('addBud', JSON.stringify(alarm));
+    localStorage.setItem('addAlarm', JSON.stringify(alarm));
 }
 //load information with LocalStorage
 function loadBud() {
-    if (localStorage.getItem('addBud')) alarm = JSON.parse(localStorage.getItem('addBud'));
-    showBud();
+    if (localStorage.getItem('addAlarm')) {
+        alarm = JSON.parse(localStorage.getItem('addAlarm'));
+        alarm.forEach(function (item) {
+            let budField = document.getElementById('addAlarm');
+            const div = document.createElement('div');
+            const button = document.createElement('button');
+            button.setAttribute("id", item.id);
+            button.append('Удалить');
+            div.append(item.hours1, button);
+            div.classList.add('infoAlarm');
+            button.classList.add('delButton');
+            budField.appendChild(div);
+            button.addEventListener('click', function  (obj) {
+                event.preventDefault();
+                const dataFromStorage = JSON.parse(localStorage.getItem('addAlarm'));
+                if (dataFromStorage) {
+                    for (let i = 0; i < dataFromStorage.length; i++) {
+                        if (dataFromStorage[i].id == this.id) {
+                            div.remove();
+                            dataFromStorage.splice(i, 1);
+                            localStorage.setItem('addAlarm', JSON.stringify(dataFromStorage));
+                        }
+                    }
+                }
+                console.log(this.id);
+            });
+        })
+    }
 }
 //show information with LocalStorage
-function showBud() {
-    let budField = document.getElementById('addBud');
-    let out = '';
-
-    alarm.forEach(function (item) {
-        out += `<p class="alert" role="alert">hours ${item.hours1} <button>Удалить</button></p>`;
+function showBud(id, hours1) {
+    let budField = document.getElementById('addAlarm');
+    const div = document.createElement('div');
+    const button = document.createElement('button');
+    button.setAttribute("id", id);
+    button.append('Удалить');
+    div.append(hours1, button);
+    div.classList.add('infoAlarm');
+    button.classList.add('delButton');
+    budField.appendChild(div);
+    button.addEventListener('click', function  (obj) {
+        event.preventDefault();
+        const dataFromStorage = JSON.parse(localStorage.getItem('addAlarm'));
+        if (dataFromStorage) {
+            for (let i = 0; i < dataFromStorage.length; i++) {
+                if (dataFromStorage[i].id == this.id) {
+                    dataFromStorage.splice(i, 1);
+                    div.remove()
+                    localStorage.setItem('addAlarm', JSON.stringify(dataFromStorage));
+                }
+            }
+        }
+        console.log(this.id);
     });
-    budField.innerHTML = out;
 }
 //Comparison of time with an alarm clock
 function compare() {
@@ -115,43 +159,43 @@ function compare() {
     let hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
     let minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
     let sec = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
-    const dataFromStorage = JSON.parse(localStorage.getItem('addBud'));
+    const dataFromStorage = JSON.parse(localStorage.getItem('addAlarm'));
 
     if (dataFromStorage) {
         for (let i = 0; i < dataFromStorage.length; i++) {
-            if (dataFromStorage[i].hours1 == hours+':'+minutes && sec == 00) {
+            if (dataFromStorage[i].hours1 == hours + ':' + minutes && sec == '00') {
+                let a = dataFromStorage[i].id;
+                let id = document.getElementById(a);
+                if(id.id == a){
+                    document.getElementById(a).click();
+                }
                 dataFromStorage.splice(i, 1);
-                localStorage.setItem('addBud', JSON.stringify(dataFromStorage));
-                modal.style.display = 'block';
+                localStorage.setItem('addAlarm', JSON.stringify(dataFromStorage));
                 setTimeout(function () {
-                    document.getElementById("myaudio").play();
-                }, 1);
+                    myAudio.play();
+                }, 2);
+                if (modal.style.display = 'none') {
+                    modal.style.display = 'block';
+                }
+
                 function displayNone() {
                     modal.style.display = 'none';
-                    location.reload();
+                    if (modal.style.display = 'none') {
+                        setTimeout(function () {
+                            myAudio.stop();
+                        }, 1);
+                    }
                 }
                 setTimeout(displayNone, 15000);
             }
         }
     }
 }
-//Deleting an alarm manually
-let alert = document.querySelectorAll('.alert');
-alert.forEach(block => block.addEventListener('click', removeBlock));
-function removeBlock() {
-    let block = this;
-    let blockId = setInterval(function() {
-        clearInterval(blockId);
-        block.remove();
-        const dataFromStorage = JSON.parse(localStorage.getItem('addBud'));
-
-        if (dataFromStorage) {
-            if (dataFromStorage.hours1 == block.hours1) {
-                dataFromStorage.splice(0, 1);
-                localStorage.setItem('addBud', JSON.stringify(dataFromStorage));
-            }
-        }
-    }, 1)
+//Audio alarm
+let myAudio = new Audio('./audio/bud.mp3');
+HTMLAudioElement.prototype.stop = function () {
+    this.pause();
+    this.currentTime = 0.0;
 };
 
 span.onclick = function() {
@@ -161,5 +205,7 @@ span.onclick = function() {
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
+        myAudio.stop();
     };
 };
+
