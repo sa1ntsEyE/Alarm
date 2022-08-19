@@ -85,9 +85,9 @@ document.getElementById('inputSub').onclick = function() {
         alarm.push(comment);
         saveBud();
         showBud(comment.id, comment.hours1);
-        compare();
     }
 };
+
 //save information in LocalStorage
 function saveBud() {
     localStorage.setItem('addAlarm', JSON.stringify(alarm));
@@ -95,8 +95,8 @@ function saveBud() {
 //load information with LocalStorage
 function loadBud() {
     if (localStorage.getItem('addAlarm')) {
-        alarm = JSON.parse(localStorage.getItem('addAlarm'));
-        alarm.forEach(function (item) {
+        const dataFromStorage = JSON.parse(localStorage.getItem('addAlarm'));
+        dataFromStorage.forEach(function (item) {
             let budField = document.getElementById('addAlarm');
             const div = document.createElement('div');
             const button = document.createElement('button');
@@ -109,12 +109,12 @@ function loadBud() {
             budField.appendChild(div);
             button.addEventListener('click', function  (obj) {
                 event.preventDefault();
-                const dataFromStorage = JSON.parse(localStorage.getItem('addAlarm'));
                 if (dataFromStorage) {
-                    for (let i = 0; i < dataFromStorage.length; i++) {
+                    for (let i = 0; i <= dataFromStorage.length; i++) {
                         if (dataFromStorage[i].id == this.id) {
-                            div.remove();
                             dataFromStorage.splice(i, 1);
+                            div.remove();
+                            alarm.splice(0, 1);
                             localStorage.setItem('addAlarm', JSON.stringify(dataFromStorage));
                         }
                     }
@@ -128,6 +128,7 @@ function showBud(id, hours1) {
     let budField = document.getElementById('addAlarm');
     const div = document.createElement('div');
     const button = document.createElement('button');
+    const dataFromStorage = JSON.parse(localStorage.getItem('addAlarm'));
 
     button.setAttribute("id", id);
     button.append('Удалить');
@@ -137,18 +138,19 @@ function showBud(id, hours1) {
     budField.appendChild(div);
     button.addEventListener('click', function  (obj) {
         event.preventDefault();
-        const dataFromStorage = JSON.parse(localStorage.getItem('addAlarm'));
         if (dataFromStorage) {
-            for (let i = 0; i < dataFromStorage.length; i++) {
+            for (let i = 0; i <= dataFromStorage.length; i++) {
                 if (dataFromStorage[i].id == this.id) {
                     dataFromStorage.splice(i, 1);
                     div.remove();
-                    localStorage.setItem('addAlarm', JSON.stringify(dataFromStorage));
+                    alarm.splice(0, 1);
+                    localStorage.setItem('addAlarm', JSON.stringify(alarm));
                 }
             }
         }
     });
 }
+
 //Comparison of time with an alarm clock
 function compare() {
     let date = new Date();
