@@ -1,6 +1,6 @@
-let clock  = document.querySelector('.clock');
-let addAlarm = document.querySelector('.addAlarm');
-let ih = document.querySelector('#IH');
+let clock  = document.getElementById('clock');
+let addAlarm = document.getElementById('addAlarm');
+let ih = document.getElementById('IH');
 let modal = document.getElementById('myModal');
 let span = document.getElementsByClassName('close')[0];
 
@@ -12,7 +12,7 @@ function time() {
     let sec = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
 
     clock.innerHTML = `${hours}:${minutes}:${sec}`;
-    compare()
+    compare();
 }
 setInterval(time, 0);
 // time change validation
@@ -27,7 +27,7 @@ function changeHours() {
     });
     b.addEventListener('inputre', e => {
         const v = e.target.value;
-    })
+    });
 }
 
 function validateInput(b, amount) {
@@ -77,10 +77,6 @@ document.getElementById('inputSub').onclick = function() {
         time: Math.floor(Date.now() / 1000),
         id: alarm.length + 1,
     };
-    let ar = document.getElementById("IH").value.split(':');
-    let ar2 = ar.map(function (name) {
-        return name.replace(/[^0-9\.]/g, '');
-    });
 
     if (commentIH.value.length < 5) {
         alert('Enter full time');
@@ -104,6 +100,7 @@ function loadBud() {
             let budField = document.getElementById('addAlarm');
             const div = document.createElement('div');
             const button = document.createElement('button');
+
             button.setAttribute("id", item.id);
             button.append('Удалить');
             div.append(item.hours1, button);
@@ -122,7 +119,6 @@ function loadBud() {
                         }
                     }
                 }
-                console.log(this.id);
             });
         })
     }
@@ -132,6 +128,7 @@ function showBud(id, hours1) {
     let budField = document.getElementById('addAlarm');
     const div = document.createElement('div');
     const button = document.createElement('button');
+
     button.setAttribute("id", id);
     button.append('Удалить');
     div.append(hours1, button);
@@ -145,12 +142,11 @@ function showBud(id, hours1) {
             for (let i = 0; i < dataFromStorage.length; i++) {
                 if (dataFromStorage[i].id == this.id) {
                     dataFromStorage.splice(i, 1);
-                    div.remove()
+                    div.remove();
                     localStorage.setItem('addAlarm', JSON.stringify(dataFromStorage));
                 }
             }
         }
-        console.log(this.id);
     });
 }
 //Comparison of time with an alarm clock
@@ -208,4 +204,3 @@ window.onclick = function (event) {
         myAudio.stop();
     };
 };
-

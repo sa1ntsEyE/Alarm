@@ -1,46 +1,64 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap');
+/*{*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*    border: 0;*/
+/*}*/
+
+/**,*:before,*:after{*/
+/*    -moz-box-sizing: border-box;*/
+/*    -webkit-box-sizing: border-box;*/
+/*    box-sizing: border-box;*/
+/*}*/
+
+/*:focus,:active{outline: none;}*/
+/*a:focus,a:active{outline: none;}*/
+
+/*nav,footer,header,aside{display: block;}*/
+
+/*html,body{*/
+/*    height: 100%;*/
+/*    width: 100%;*/
+/*    font-size: 100%;*/
+/*    line-height: 1;*/
+/*    font-size: 14px;*/
+/*    -ms-text-size-adjust: 100%;*/
+/*    -moz-text-size-adjust: 100%;*/
+/*    -webkit-text-size-adjust: 100%;*/
+/*}*/
+
+/*input,button,textarea{font-family: inherit;}*/
+
+/*input::-ms-clear{display: none;}*/
+/*button{cursor: pointer;}*/
+/*button::-moz-focus-inner {padding:0;border:0;}*/
+/*a, a:visited{text-decoration: none;}*/
+/*a:hover{text-decoration: none;}*/
+/*ul li{list-style: none;}*/
+/*img{vertical-align: top;}*/
+/*h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}*/
+/*/////////////////////////////////////////////*/
+
+body{
     padding: 0;
     margin: 0;
-    border: 0;
+    background: url("./assets/back.jpg");
+    background-color: white;
+    font-family: 'Oswald', sans-serif;
 }
 
-*,*:before,*:after{
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+::placeholder {
+    color: black;
+    opacity: 1;
 }
-
-:focus,:active{outline: none;}
-a:focus,a:active{outline: none;}
-
-nav,footer,header,aside{display: block;}
-
-html,body{
-    height: 100%;
-    width: 100%;
-    font-size: 100%;
-    line-height: 1;
-    font-size: 14px;
-    -ms-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-}
-
-input,button,textarea{font-family: inherit;}
-
-input::-ms-clear{display: none;}
-button{cursor: pointer;}
-button::-moz-focus-inner {padding:0;border:0;}
-a, a:visited{text-decoration: none;}
-a:hover{text-decoration: none;}
-ul li{list-style: none;}
-img{vertical-align: top;}
-h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
-/*/////////////////////////////////////////////*/
 
 ._container{
     max-width: 1110px;
     margin: 0 auto;
+}
+
+.clock__main__block{
+    margin: 100px 0 0 0;
 }
 
 .clock__block{
@@ -53,6 +71,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     display: flex;
     justify-content: center;
     align-content: center;
+
 }
 
 .clock__{
@@ -61,16 +80,16 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 }
 
 .clock__name{
-    color: red;
+    font-size: 69px;
 }
 
-.budilnik{
+.alarm{
     font-size: 24px;
     text-align: center;
 }
 
-.bud__name{
-    color: red;
+.alarm__name{
+    font-size: 48px;
 }
 
 .inputs{
@@ -82,15 +101,14 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 }
 
 .input-hours{
-    text-align: center;
+    margin: 0 0 10px 0;
     width: 80px;
-    border: 1px solid #000000;
-}
-
-.input-min{
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: transparent;
+    outline: none;
+    transition: 0.3s;
     text-align: center;
-    width: 40px;
-    border: 1px solid #000000;
 }
 
 .modal{
@@ -118,6 +136,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     margin: 0 0 20px 0;
     font-size: 24px;
 }
+
 .close{
     color: #aaa;
     float: right;
@@ -130,62 +149,41 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 }
 
 .inputSub{
-    width: 140px;
-    height: 30px;
+    background: white;
+    color: black;
+    width: 200px;
+    height: 40px;
+    margin: 0 0 10px 0;
+    font-size: 20px;
     border: 1px solid #000000;
-    font-size: 14px;
+    font-family: 'Oswald', sans-serif;
+    line-height: 1.2;
+    transition-duration: 0.5s;
 }
 
-.inputDel{
+.inputSub:hover{
+    background: black;
+    color: white;
+}
+
+.delButton{
+    background: white;
+    color: black;
     width: 120px;
-    height: 20px;
+    height: 40px;
+    margin: 0 0 10px 0;
+    font-size: 20px;
     border: 1px solid #000000;
-    font-size: 12px;
+    font-family: 'Oswald', sans-serif;
+    line-height: 1.2;
+    transition-duration: 0.5s;
+    margin: 0 0 0 20px;
+}
+.delButton:hover{
+    background: black;
+    color: white;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.infoAlarm{
+    margin: 0 0 10px 0;
+}
